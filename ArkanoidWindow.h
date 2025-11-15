@@ -3,6 +3,7 @@
 
 #include "Graph_lib/Window.h"
 #include "Graph_lib/Graph.h"
+#include "Platform.h"
 
 using namespace Graph_lib;
 
@@ -12,7 +13,7 @@ public:
 
     virtual ~ArkanoidWindow() = default;
 
-    Rectangle* rect = nullptr;
+    Platform* rect = nullptr;
 private:
     int handle(int event) override;
 };

@@ -16,6 +16,7 @@ add_executable(
         Graph_lib/GUI.cpp
         Graph_lib/Window.cpp
         ArkanoidWindow.cpp
+        Platform.cpp
 )
 
 target_include_directories(${TARGET} PRIVATE
