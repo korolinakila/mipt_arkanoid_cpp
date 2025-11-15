@@ -15,11 +15,13 @@ add_executable(
         Graph_lib/Graph.cpp
         Graph_lib/GUI.cpp
         Graph_lib/Window.cpp
+        ArkanoidWindow.cpp
 )
 
 target_include_directories(${TARGET} PRIVATE
         ${CMAKE_SOURCE_DIR}
         ${FLTK_INCLUDE_DIR}
+        ${CMAKE_SOURCE_DIR}/Graph_lib
 )
 
 target_link_libraries(${TARGET} PRIVATE
