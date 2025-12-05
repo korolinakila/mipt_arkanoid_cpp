@@ -1,0 +1,50 @@
+[
+{
+  "directory": "/mnt/d/VSprojects/mipt_arkanoid_cpp/build",
+  "command": "/usr/bin/g++  -I/mnt/d/VSprojects/mipt_arkanoid_cpp -I/usr/lib/fltk -I/mnt/d/VSprojects/mipt_arkanoid_cpp/Graph_lib -g -std=c++20 -o CMakeFiles/arkanoid.dir/main.cpp.o -c /mnt/d/VSprojects/mipt_arkanoid_cpp/main.cpp",
+  "file": "/mnt/d/VSprojects/mipt_arkanoid_cpp/main.cpp",
+  "output": "CMakeFiles/arkanoid.dir/main.cpp.o"
+},
+{
+  "directory": "/mnt/d/VSprojects/mipt_arkanoid_cpp/build",
+  "command": "/usr/bin/g++  -I/mnt/d/VSprojects/mipt_arkanoid_cpp -I/usr/lib/fltk -I/mnt/d/VSprojects/mipt_arkanoid_cpp/Graph_lib -g -std=c++20 -o CMakeFiles/arkanoid.dir/Graph_lib/Graph.cpp.o -c /mnt/d/VSprojects/mipt_arkanoid_cpp/Graph_lib/Graph.cpp",
+  "file": "/mnt/d/VSprojects/mipt_arkanoid_cpp/Graph_lib/Graph.cpp",
+  "output": "CMakeFiles/arkanoid.dir/Graph_lib/Graph.cpp.o"
+},
+{
+  "directory": "/mnt/d/VSprojects/mipt_arkanoid_cpp/build",
+  "command": "/usr/bin/g++  -I/mnt/d/VSprojects/mipt_arkanoid_cpp -I/usr/lib/fltk -I/mnt/d/VSprojects/mipt_arkanoid_cpp/Graph_lib -g -std=c++20 -o CMakeFiles/arkanoid.dir/Graph_lib/GUI.cpp.o -c /mnt/d/VSprojects/mipt_arkanoid_cpp/Graph_lib/GUI.cpp",
+  "file": "/mnt/d/VSprojects/mipt_arkanoid_cpp/Graph_lib/GUI.cpp",
+  "output": "CMakeFiles/arkanoid.dir/Graph_lib/GUI.cpp.o"
+},
+{
+  "directory": "/mnt/d/VSprojects/mipt_arkanoid_cpp/build",
+  "command": "/usr/bin/g++  -I/mnt/d/VSprojects/mipt_arkanoid_cpp -I/usr/lib/fltk -I/mnt/d/VSprojects/mipt_arkanoid_cpp/Graph_lib -g -std=c++20 -o CMakeFiles/arkanoid.dir/Graph_lib/Window.cpp.o -c /mnt/d/VSprojects/mipt_arkanoid_cpp/Graph_lib/Window.cpp",
+  "file": "/mnt/d/VSprojects/mipt_arkanoid_cpp/Graph_lib/Window.cpp",
+  "output": "CMakeFiles/arkanoid.dir/Graph_lib/Window.cpp.o"
+},
+{
+  "directory": "/mnt/d/VSprojects/mipt_arkanoid_cpp/build",
+  "command": "/usr/bin/g++  -I/mnt/d/VSprojects/mipt_arkanoid_cpp -I/usr/lib/fltk -I/mnt/d/VSprojects/mipt_arkanoid_cpp/Graph_lib -g -std=c++20 -o CMakeFiles/arkanoid.dir/ArkanoidWindow.cpp.o -c /mnt/d/VSprojects/mipt_arkanoid_cpp/ArkanoidWindow.cpp",
+  "file": "/mnt/d/VSprojects/mipt_arkanoid_cpp/ArkanoidWindow.cpp",
+  "output": "CMakeFiles/arkanoid.dir/ArkanoidWindow.cpp.o"
+},
+{
+  "directory": "/mnt/d/VSprojects/mipt_arkanoid_cpp/build",
+  "command": "/usr/bin/g++  -I/mnt/d/VSprojects/mipt_arkanoid_cpp -I/usr/lib/fltk -I/mnt/d/VSprojects/mipt_arkanoid_cpp/Graph_lib -g -std=c++20 -o CMakeFiles/arkanoid.dir/backend/Platform.cpp.o -c /mnt/d/VSprojects/mipt_arkanoid_cpp/backend/Platform.cpp",
+  "file": "/mnt/d/VSprojects/mipt_arkanoid_cpp/backend/Platform.cpp",
+  "output": "CMakeFiles/arkanoid.dir/backend/Platform.cpp.o"
+},
+{
+  "directory": "/mnt/d/VSprojects/mipt_arkanoid_cpp/build",
+  "command": "/usr/bin/g++  -I/mnt/d/VSprojects/mipt_arkanoid_cpp -I/usr/lib/fltk -I/mnt/d/VSprojects/mipt_arkanoid_cpp/Graph_lib -g -std=c++20 -o CMakeFiles/arkanoid.dir/frontend/PlatformShape.cpp.o -c /mnt/d/VSprojects/mipt_arkanoid_cpp/frontend/PlatformShape.cpp",
+  "file": "/mnt/d/VSprojects/mipt_arkanoid_cpp/frontend/PlatformShape.cpp",
+  "output": "CMakeFiles/arkanoid.dir/frontend/PlatformShape.cpp.o"
+},
+{
+  "directory": "/mnt/d/VSprojects/mipt_arkanoid_cpp/build",
+  "command": "/usr/bin/g++  -I/mnt/d/VSprojects/mipt_arkanoid_cpp -I/usr/lib/fltk -I/mnt/d/VSprojects/mipt_arkanoid_cpp/Graph_lib -g -std=c++20 -o CMakeFiles/arkanoid.dir/frontend/StartWindow.cpp.o -c /mnt/d/VSprojects/mipt_arkanoid_cpp/frontend/StartWindow.cpp",
+  "file": "/mnt/d/VSprojects/mipt_arkanoid_cpp/frontend/StartWindow.cpp",
+  "output": "CMakeFiles/arkanoid.dir/frontend/StartWindow.cpp.o"
+}
+]

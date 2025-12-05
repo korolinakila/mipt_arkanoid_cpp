@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.0)
+cmake_minimum_required(VERSION 3.28.3)
 project(arkanoid)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -18,6 +18,7 @@ add_executable(
         ArkanoidWindow.cpp
         backend/Platform.cpp
         frontend/PlatformShape.cpp
+        frontend/StartWindow.cpp
 )
 
 target_include_directories(${TARGET} PRIVATE
@@ -28,5 +29,16 @@ target_include_directories(${TARGET} PRIVATE
 
 target_link_libraries(${TARGET} PRIVATE
         ${FLTK_LIBRARIES}
+        fltk
+    fltk_images
+    fltk_forms
+    fltk_gl
+    jpeg
+    png
+    z
+    X11
+    Xext
+    Xft
+    Xinerama
 )
 
