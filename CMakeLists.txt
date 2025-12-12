@@ -19,6 +19,7 @@ add_executable(
         Platform.cpp
         StartScreen.cpp
         GameScreen.cpp
+        Ball.cpp
 )
 
 target_include_directories(${TARGET} PRIVATE

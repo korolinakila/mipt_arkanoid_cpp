@@ -20,4 +20,9 @@ ArkanoidWindow::ArkanoidWindow(Point xy, int w, int h, const std::string &title)
 void ArkanoidWindow::openGameScreen() {
     gameScreen->show();
     startScreen->hide();
+
+    Fl::add_timeout(0.016, [](void* userdata) -> void {
+        GameScreen* screen = static_cast<GameScreen*>(userdata);
+        screen->TimerCallback(userdata);
+    }, gameScreen);
 }

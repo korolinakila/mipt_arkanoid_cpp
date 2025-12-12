@@ -3,13 +3,15 @@
 
 #include "FL/Fl_Group.H"
 #include "Platform.h"
-
+#include "Ball.h"
 
 class GameScreen : public Fl_Group {
 public:
     GameScreen(int x, int y, int w, int h);
 
     void attach(Shape& s) { shapes.push_back(&s); }
+
+    void TimerCallback(void* userdata);
 
 protected:
     void draw() override;
@@ -19,6 +21,8 @@ private:
     std::vector<Shape*> shapes;
 
     Platform platform;
+    Ball ball;
+
     int handle(int event) override;
 
 };
