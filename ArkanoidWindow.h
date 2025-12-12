@@ -3,7 +3,9 @@
 
 #include "Graph_lib/Window.h"
 #include "Graph_lib/Graph.h"
-#include "frontend/PlatformShape.h"
+#include "Platform.h"
+#include "StartScreen.h"
+#include "GameScreen.h"
 
 using namespace Graph_lib;
 
@@ -14,9 +16,12 @@ public:
 
     virtual ~ArkanoidWindow() = default;
 
-    PlatformShape* platform = nullptr;
+    void openGameScreen();
+
 private:
-    int handle(int event) override;
+    StartScreen* startScreen;
+    GameScreen* gameScreen;
+
 };
 
 #endif //ARKANOID_ARKANOIDWINDOW_H
