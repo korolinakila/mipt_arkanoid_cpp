@@ -20,7 +20,7 @@ add_executable(
         StartScreen.cpp
         GameScreen.cpp
         Ball.cpp
-        BreakablePlatform.cpp
+        Block.cpp
 )
 
 target_include_directories(${TARGET} PRIVATE
