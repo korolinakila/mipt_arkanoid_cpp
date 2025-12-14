@@ -1,8 +1,6 @@
 #include "GameScreen.h"
-#include "Fl/Fl.H"
-#include "Fl/Fl_Group.H"
+#include <cmath>
 
-#include <iostream>
 GameScreen::GameScreen(int x, int y, int w, int h) :
         Fl_Group(x, y, w, h),
         platform{Point{350, 785}, 100, 10},
@@ -24,7 +22,7 @@ void GameScreen::draw() {
         shapes[i]->draw();
 }
 
-void GameScreen::updateFrame(void* userdata) {
+void GameScreen::updateFrame(void *userdata) {
     int dx = ball.get_dx();
     int dy = ball.get_dy();
     ball.move(dx, dy);
@@ -37,7 +35,15 @@ void GameScreen::updateFrame(void* userdata) {
     }
 
     if (collideBallWithPlatform()) {
-        ball.set_dy(-dy);
+        Point collidePoint = ball.center();
+        int x = collidePoint.x;
+        double w = platform.width() / 2;
+
+        int new_dx = std::round((x - platform.point(0).x - w) / w * abs(dy));
+
+        ball.set_dx(new_dx);
+        ball.set_dy(-std::round(std::sqrt(dx * dx + dy * dy - new_dx * new_dx)));
+
     }
     if (collideBallWithFloor()) {
         ball.set_dy(0); // TODO: game over screen
@@ -66,7 +72,7 @@ bool GameScreen::collideBallWithPlatform() const {
     int w = platform.width();
     int h = platform.height();
 
-    return ((y1 + 2 * r >= y2  && y1 + 2 * r <= y2 + h) && (prev_y1 + 2 * r < y2) && (x2 <= x1 + r && x1 + r <= x2 + w));
+    return ((y1 + 2 * r >= y2 && y1 + 2 * r <= y2 + h) && (prev_y1 + 2 * r < y2) && (x2 <= x1 + r && x1 + r <= x2 + w));
 }
 
 bool GameScreen::collideBallWithWalls() const {
