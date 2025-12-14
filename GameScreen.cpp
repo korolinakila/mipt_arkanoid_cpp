@@ -10,7 +10,8 @@ GameScreen::GameScreen(int x, int y, int w, int h) :
 }
 
 int GameScreen::handle(int event) {
-    platform.setPos(std::min(std::max(Fl::event_x(), 0), w() - platform.width()), platform.point(0).y);
+    int platform_w = platform.width();
+    platform.setPos(std::min(std::max(Fl::event_x() - platform_w / 2, 0), w() - platform_w), platform.point(0).y);
     return 0;
 }
 
