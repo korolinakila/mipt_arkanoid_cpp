@@ -73,18 +73,14 @@ bool GameScreen::collideBallWithPlatform() const {
     int x1 = p1.x;
     int y1 = p1.y;
     int prev_y1 = ball.getPrevPos().y;
-    int r = ballRadius;
 
     Point p2 = platform.point(0);
     int x2 = p2.x;
-    int y2 = platformY;
-    int w = platformWidth;
-    int h = platformHeight;
 
     return
             (y1 + 2 * ballRadius >= platformY && y1 + 2 * ballRadius <= platformY + platformHeight) &&
             (prev_y1 + 2 * ballRadius < platformY) &&
-            (x2 <= x1 + ballRadius && x1 + ballRadius <= x2 + platformWidth);
+            (x2 <= x1 + 2 * ballRadius && x1 <= x2 + platformWidth);
 }
 
 bool GameScreen::collideBallWithWalls() const {
