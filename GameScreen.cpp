@@ -6,12 +6,12 @@ GameScreen::GameScreen(int x, int y, int w, int h) :
         Fl_Group(x, y, w, h),
         platform{Point{platformStartX, platformY}, platformWidth, platformHeight},
         ball{Point{50, 100}, ballRadius},
-        blocks{20, 20} {
+        blocks{10, 10} {
     attach(platform);
     attach(ball);
 
-    for (int i = 0; i < 20; i++) {
-        for (int j = 0; j < 20; j++) {
+    for (int i = 0; i < blocks.getMatrixHeight(); i++) {
+        for (int j = 0; j < blocks.getMatrixWidth(); j++) {
             Block* b = blocks.get_block(i, j);
             attach((Shape&) *b);
         }
@@ -66,6 +66,12 @@ void GameScreen::updateFrame(void *userdata) {
     }
 
     if (auto [i, j] = checkTopCollideBallWithBlocks(); i != -1 && j != -1) {
+        detach((Shape&) *blocks.get_block(i, j));
+        blocks.del_block(i, j);
+        ball.set_dy(-dy);
+    }
+
+    if (auto [i, j] = checkBottomCollideBallWithBlocks(); i != -1 && j != -1) {
         detach((Shape&) *blocks.get_block(i, j));
         blocks.del_block(i, j);
         ball.set_dy(-dy);
@@ -139,4 +145,33 @@ std::pair<int, int> GameScreen::checkTopCollideBallWithBlocks() {
     return std::pair<int, int>(-1, -1);
 }
 
+std::pair<int, int> GameScreen::checkBottomCollideBallWithBlocks() {
+    Point p1 = ball.point(0);
+    int x1 = p1.x;
+    int y1 = p1.y;
+    int prev_y1 = ball.getPrevPos().y;
 
+    int w = blocks.getBlockWidth();
+    int h = blocks.getBlockHeight();
+
+    for (int i = 0; i < blocks.getMatrixHeight(); i++) {
+        for (int j = 0; j < blocks.getMatrixWidth(); j++) {
+            Block* block = blocks.get_block(i, j);
+            if (block == nullptr) {
+                continue;
+            }
+
+            Point p2 = block->point(0);
+            int x2 = p2.x;
+            int y2 = p2.y;
+
+            if ((y2 + h >= y1 && y2 + h <= y1 + 2 * ballRadius) &&
+                !(y2 + h >= prev_y1 && y2 + h <= prev_y1 + 2 * ballRadius) &&
+                (x2 <= x1 + 2 * ballRadius && x1 <= x2 + w)) {
+                return std::pair<int, int>(i, j);
+            }
+        }
+    }
+
+    return std::pair<int, int>(-1, -1);
+}
