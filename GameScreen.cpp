@@ -77,6 +77,12 @@ void GameScreen::updateFrame(void *userdata) {
         ball.set_dy(-dy);
     }
 
+    if (auto [i, j] = checkLeftCollideBallWithBlocks(); i != -1 && j != -1) {
+        detach((Shape&) *blocks.get_block(i, j));
+        blocks.del_block(i, j);
+        ball.set_dx(-dx);
+    }
+
     redraw();
 
     Fl::repeat_timeout(0.016, [](void* userdata) -> void {
@@ -168,6 +174,37 @@ std::pair<int, int> GameScreen::checkBottomCollideBallWithBlocks() {
             if ((y2 + h >= y1 && y2 <= y1 + 2 * ballRadius) &&
                 !(y2 + h >= prev_y1 && y2 + h <= prev_y1 + 2 * ballRadius) &&
                 (x2 <= x1 + 2 * ballRadius && x1 <= x2 + w)) {
+                return std::pair<int, int>(i, j);
+            }
+        }
+    }
+
+    return std::pair<int, int>(-1, -1);
+}
+
+std::pair<int, int> GameScreen::checkLeftCollideBallWithBlocks() {
+    Point p1 = ball.point(0);
+    int x1 = p1.x;
+    int y1 = p1.y;
+    int prev_x1 = ball.getPrevPos().x;
+
+    int w = blocks.getBlockWidth();
+    int h = blocks.getBlockHeight();
+
+    for (int i = 0; i < blocks.getMatrixHeight(); i++) {
+        for (int j = 0; j < blocks.getMatrixWidth(); j++) {
+            Block *block = blocks.get_block(i, j);
+            if (block == nullptr) {
+                continue;
+            }
+
+            Point p2 = block->point(0);
+            int x2 = p2.x;
+            int y2 = p2.y;
+
+            if ((x1 + 2 * ballRadius >= x2 && x1 <= x2 + w) &&
+                (prev_x1 + 2 * ballRadius < x2) &&
+                (y2 <= y1 + 2 * ballRadius && y1 <= y2 + h)) {
                 return std::pair<int, int>(i, j);
             }
         }

@@ -35,6 +35,7 @@ private:
 
     std::pair<int, int> checkTopCollideBallWithBlocks();
     std::pair<int, int> checkBottomCollideBallWithBlocks();
+    std::pair<int, int> checkLeftCollideBallWithBlocks();
 };
 
 

@@ -22,8 +22,8 @@ public:
 
 private:
     Point prevPos;
-    int dx = 8;
-    int dy = 8;
+    int dx = 2;
+    int dy = 2;
 };
 
 
