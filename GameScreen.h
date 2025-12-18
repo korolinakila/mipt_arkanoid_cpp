@@ -32,11 +32,6 @@ private:
     bool collideBallWithWalls() const;
     bool collideBallWithRoof() const;
     bool collideBallWithFloor() const;
-
-    std::pair<int, int> checkTopCollideBallWithBlocks();
-    std::pair<int, int> checkBottomCollideBallWithBlocks();
-    std::pair<int, int> checkLeftCollideBallWithBlocks();
-    std::pair<int, int> checkRightCollideBallWithBlocks();
 };
 
 
