@@ -6,7 +6,7 @@
 #include "Graph_lib/Window.h"
 
 StartScreen::StartScreen(int x, int y, int w, int h, Graph_lib::Window& window) 
-    : Fl_Group(x, y, w, h), background_img("sources/textures/StartScreen.png") {
+    : Fl_Group(x, y, w, h), background("sources/textures/StartScreen.png") {
     
     Fl_Button *button = new Fl_Button(300, 350, 200, 100, "СТАРТ");
     button->callback([](Fl_Widget *w, void *data) {
@@ -15,10 +15,10 @@ StartScreen::StartScreen(int x, int y, int w, int h, Graph_lib::Window& window)
 }
 
 void StartScreen::draw() {
-    // Рисуем фон
-    if (!background_img.fail()) {
-        background_img.draw(x(), y(), w(), h());
+
+    if (!background.fail()) {
+        background.draw(x(), y(), w(), h());
     }
-    // Рисуем остальные виджеты (кнопку)
+
     Fl_Group::draw();
 }

@@ -7,7 +7,7 @@
 GameScreen::GameScreen(int x, int y, int w, int h) :
         Fl_Group(x, y, w, h),
         platform{Point{platformStartX, platformY}, platformWidth, platformHeight},
-        ball{Point{50, 100}, ballRadius},
+        ball{Point{50, h/2}, ballRadius},
         blocks{10, 10} {
     attach(platform);
     attach(ball);
@@ -69,8 +69,20 @@ void GameScreen::updateFrame(void *userdata) {
 
     }
     if (collideBallWithFloor()) {
-        ball.set_dy(0); // TODO: game over screen
-        ball.set_dx(0);
+    ball.set_dy(0);
+    ball.set_dx(0);
+
+    Fl_PNG_Image loseScreen("sources/textures/LoseScreen.png");
+    if (!loseScreen.fail()) {
+        loseScreen.draw(x(), y(), w(), h());
+    } else {
+        fl_color(FL_RED);
+        fl_rectf(x(), y(), w(), h());
+        fl_color(FL_WHITE);
+        fl_font(FL_HELVETICA_BOLD, 36);
+        fl_draw("GAME OVER", x() + w()/2 - 100, y() + h()/2);
+    }
+    return;
     }
 
     if (auto [i, j] = checkTopCollideBallWithBlocks(); i != -1 && j != -1) {
