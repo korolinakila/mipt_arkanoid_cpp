@@ -1,6 +1,8 @@
 #include "GameScreen.h"
 #include "Settings.h"
 #include <cmath>
+#include "Fl/Fl.H"
+#include "Fl/Fl_Group.H"
 
 GameScreen::GameScreen(int x, int y, int w, int h) :
         Fl_Group(x, y, w, h),
@@ -30,9 +32,13 @@ int GameScreen::handle(int event) {
 }
 
 void GameScreen::draw() {
-    Fl_Group::draw();
-    fl_color(FL_GRAY);
-    fl_rectf(x(), y(), windowWidth, windowHeight);
+    Fl_PNG_Image background("sources/textures/background.png");
+    if (background.w() > 0) {
+        background.draw(x(), y(), w(), h());
+    } else {
+        fl_color(FL_GRAY);
+        fl_rectf(x(), y(), w(), h());
+    }
     for (unsigned int i = 0; i < shapes.size(); ++i)
         shapes[i]->draw();
 }
@@ -50,6 +56,8 @@ void GameScreen::updateFrame(void *userdata) {
     }
 
     if (collideBallWithPlatform()) {
+        const_cast<Ball&>(ball).triggerHappySmile();
+        const_cast<Platform&>(platform).triggerAwake();
         Point collidePoint = ball.center();
         int x = collidePoint.x;
         double w = platformWidth / 2;
