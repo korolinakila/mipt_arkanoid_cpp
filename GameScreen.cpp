@@ -1,6 +1,7 @@
 #include "GameScreen.h"
 #include "Settings.h"
 #include <cmath>
+#include <vector>
 
 GameScreen::GameScreen(int x, int y, int w, int h) :
         Fl_Group(x, y, w, h),
@@ -9,6 +10,19 @@ GameScreen::GameScreen(int x, int y, int w, int h) :
         blocks{10, 10} {
     attach(platform);
     attach(ball);
+    
+    std::vector<std::vector<int>> generate_matrix;
+    srand(time(0));
+    
+    for (int i = 0; i < blocks.getMatrixHeight(); i++) {
+        generate_matrix.push_back(std::vector<int>());
+        for (int j = 0; j < blocks.getMatrixWidth(); j++) {
+            generate_matrix[i].push_back(rand()%2);
+        }
+    }
+
+    blocks.generate(generate_matrix);
+
 
     for (int i = 0; i < blocks.getMatrixHeight(); i++) {
         for (int j = 0; j < blocks.getMatrixWidth(); j++) {

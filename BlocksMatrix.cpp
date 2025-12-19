@@ -16,13 +16,22 @@ BlocksMatrix::BlocksMatrix(int matrixHeight, int matrixWidth) :
         field[i].resize(matrixHeight);
     }
 
-    generate();
 }
 
 void BlocksMatrix::generate() {
     for (int i = 0; i < matrixWidth; i++) {
         for (int j = 0; j < matrixHeight; j++) {
             field[i][j] = new Block(Graph_lib::Point(j*blockWidth, i*blockHeight), blockWidth, blockHeight, 5);  // 5 = hp
+        }
+    }
+}
+
+void BlocksMatrix::generate(std::vector<std::vector<int>> generate_matrix) {
+    for (int i = 0; i < matrixWidth; i++) {
+        for (int j = 0; j < matrixHeight; j++) {
+            if (generate_matrix[i][j]) {
+            field[i][j] = new Block(Graph_lib::Point(j*blockWidth, i*blockHeight), blockWidth, blockHeight, 5);  // 5 = hp
+            }
         }
     }
 }
