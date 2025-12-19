@@ -16,6 +16,8 @@ public:
     void set_block(int x, int y);
     void del_block(int x, int y);
     bool allBlocksDestroyed() const;
+    void generate();
+    void generate(std::vector<std::vector<int>> generate_matrix);
 
 private:
     int matrixHeight;
@@ -23,7 +25,6 @@ private:
     int blockHeight;
     int blockWidth;
     std::vector<std::vector<Block*>> field;
-    void generate();
 };
 
 #endif //ARKANOID_BLOCKSMATRIX_H

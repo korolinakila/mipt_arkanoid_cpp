@@ -1,6 +1,7 @@
 #include "GameScreen.h"
 #include "Settings.h"
 #include <cmath>
+#include <vector>
 #include "ArkanoidWindow.h"
 
 
@@ -12,6 +13,19 @@ GameScreen::GameScreen(int x, int y, int w, int h, ArkanoidWindow* p) :
         blocks{10, 10} {
     attach(platform);
     attach(ball);
+
+    std::vector<std::vector<int>> generate_matrix;
+    srand(time(0));
+
+    for (int i = 0; i < blocks.getMatrixHeight(); i++) {
+        generate_matrix.push_back(std::vector<int>());
+        for (int j = 0; j < blocks.getMatrixWidth(); j++) {
+            generate_matrix[i].push_back(rand()%2);
+        }
+    }
+
+    blocks.generate(generate_matrix);
+
 
     for (int i = 0; i < blocks.getMatrixHeight(); i++) {
         for (int j = 0; j < blocks.getMatrixWidth(); j++) {
@@ -240,13 +254,12 @@ void GameScreen::updateFrame(void *userdata) {
         redraw();
 
         Fl::repeat_timeout(0.016, [](void *userdata) -> void {
-            GameScreen *screen = static_cast<GameScreen *>(userdata);
+            GameScreen* screen = static_cast<GameScreen *>(userdata);
             screen->updateFrame(userdata);
         }, this);
     }
 
 }
-
 
 bool GameScreen::collideBallWithPlatform() const {
     Point p1 = ball.point(0);
