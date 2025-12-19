@@ -73,7 +73,7 @@ void GameScreen::updateFrame(void *userdata) {
         int new_dx = std::round((x - platform.point(0).x - w) / w * abs(dy));
 
         ball.set_dx(new_dx);
-        ball.set_dy(-std::round(std::sqrt(dx * dx + dy * dy - new_dx * new_dx)));
+        ball.set_dy(std::min(-std::round(std::sqrt(dx * dx + dy * dy - new_dx * new_dx)), -1.));
 
     }
     if (collideBallWithFloor()) {
